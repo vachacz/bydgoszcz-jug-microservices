@@ -1,1 +1,2 @@
 include ':eureka-server'
+include ':zipkin-server'

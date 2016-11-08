@@ -7,3 +7,9 @@ services:
     container_name: eureka-server
     ports:
       - "8761:8761"
+
+  service-zipkin:
+    image: zipkin-server-image
+    container_name: zipkin-server
+    ports:
+      - "9411:9411"

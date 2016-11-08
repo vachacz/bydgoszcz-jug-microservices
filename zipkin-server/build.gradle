@@ -1,0 +1,5 @@
+
+// Empty build task to execute buildDocker task without java dependency ('build' is java task)
+task build {}
+
+apply from: '../docker.gradle'
