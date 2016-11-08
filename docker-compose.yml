@@ -9,7 +9,35 @@ services:
       - "8761:8761"
 
   service-zipkin:
-    image: zipkin-server-image
+    image: openzipkin/zipkin
     container_name: zipkin-server
     ports:
       - "9411:9411"
+
+  service-elasticsearch:
+    image: elasticsearch
+    container_name: elasticsearch-server
+
+  service-kibana:
+    image: kibana
+    container_name: kibana-server
+    links:
+     - service-elasticsearch:elasticsearch
+    ports:
+     - "5601:5601"
+
+  service-bydgoszcz-jug:
+    image: bydgoszcz-jug-image
+    container_name: bydgoszcz-jug-server
+    ports:
+      - "8081:8080"
+    links:
+      - service-eureka
+
+  service-torun-jug:
+    image: torun-jug-image
+    container_name: torun-jug-server
+    ports:
+      - "8082:8080"
+    links:
+      - service-eureka
