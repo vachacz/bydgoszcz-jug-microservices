@@ -1,0 +1,4 @@
+
+task buildDocker(type: Exec, dependsOn: build) {
+    commandLine "docker", "build", "-f", "./src/main/docker/Dockerfile", "-t", "${project.name}-image:latest", "."
+}
