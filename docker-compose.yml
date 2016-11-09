@@ -26,18 +26,9 @@ services:
     ports:
      - "5601:5601"
 
-  service-bydgoszcz-jug:
-    image: bydgoszcz-jug-image
-    container_name: bydgoszcz-jug-server
+  service-rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq-server
     ports:
-      - "8081:8080"
-    links:
-      - service-eureka
-
-  service-torun-jug:
-    image: torun-jug-image
-    container_name: torun-jug-server
-    ports:
-      - "8082:8080"
-    links:
-      - service-eureka
+     - "5672:5672"
+     - "15672:15672"
