@@ -38,6 +38,9 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-zipkin')
 	compile('org.springframework.boot:spring-boot-starter-jersey')
 	compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+
+	compile('com.internetitem:logback-elasticsearch-appender:1.4')
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

@@ -43,14 +43,16 @@ public class TorunJugApplication {
 		private BydgoszczJugClient bydgoszczJugClient;
 
 		@RequestMapping(path = "/invite", method = RequestMethod.GET)
-		public String greet() {
+		public String invite() {
 			logger.info("Invite executed");
 			bydgoszczJugClient.ack();
-			return "greet";
+			logger.info("Seeyou executed");
+			return "invited";
 		}
 
 		@RequestMapping(path = "/seeyou", method = RequestMethod.GET)
 		public String seeyou() {
+			logger.info("Seeyou entering");
 			logger.info("Seeyou executed");
 			return "seeyou";
 		}

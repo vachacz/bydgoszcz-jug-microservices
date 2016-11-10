@@ -14,7 +14,9 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,20 +37,26 @@ public class BydgoszczJugApplication {
 	@org.springframework.web.bind.annotation.RestController
 	public class RestController {
 
+//		@Autowired
+//		private SendingBean sendingBean;
+
 		@Autowired
 		private TorunJugClient torunJugClient;
 
 		@RequestMapping(path = "/inviteTorunJug", method = RequestMethod.GET)
 		public String inviteTorunJug() {
-			logger.info("InviteTorunJug executed");
+			logger.info("InviteTorunJug entering");
 			torunJugClient.invite();
-			return "ack";
+			logger.info("InviteTorunJug executed");
+			return "no worries, will do";
 		}
 
 		@RequestMapping(path = "/ack", method = RequestMethod.GET)
 		public String greet() {
-			logger.info("Ack executed");
+			logger.info("Ack entering");
 			torunJugClient.seeyou();
+			logger.info("Ack executed");
+			//sendingBean.sendGifts("gifts");
 			return "ack";
 		}
 
@@ -64,5 +72,16 @@ public class BydgoszczJugApplication {
 		void seeyou();
 
 	}
+
+//	@Component
+//	public class SendingBean {
+//
+//		@Autowired
+//		private Source source;
+//
+//		public void sendGifts(String body) {
+//			source.output().send(MessageBuilder.withPayload(body).build());
+//		}
+//	}
 
 }
