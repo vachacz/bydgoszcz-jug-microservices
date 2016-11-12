@@ -1,11 +1,21 @@
 package pl.jug.torun;
 
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.jvm.GarbageCollectorMetricSet;
+import com.codahale.metrics.jvm.MemoryUsageGaugeSet;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.autoconfigure.ExportMetricReader;
+import org.springframework.boot.actuate.autoconfigure.ExportMetricWriter;
+import org.springframework.boot.actuate.metrics.reader.MetricReader;
+import org.springframework.boot.actuate.metrics.reader.MetricRegistryMetricReader;
+import org.springframework.boot.actuate.metrics.statsd.StatsdMetricWriter;
+import org.springframework.boot.actuate.metrics.writer.MetricWriter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
@@ -15,6 +25,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -78,5 +89,22 @@ public class TorunJugApplication {
 		void ack();
 
 	}
+
+	@Bean
+	@ExportMetricReader
+	public MetricReader metricReader() {
+		return new MetricRegistryMetricReader(metricRegistry());
+	}
+
+	public MetricRegistry metricRegistry() {
+		final MetricRegistry metricRegistry = new MetricRegistry();
+
+		//jvm metrics
+		metricRegistry.register("jvm.gc", new GarbageCollectorMetricSet());
+		metricRegistry.register("jvm.mem", new MemoryUsageGaugeSet());
+
+		return metricRegistry;
+	}
+
 
 }

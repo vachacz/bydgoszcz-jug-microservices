@@ -38,3 +38,19 @@ services:
     container_name: turbine-server
     ports:
      - "9090:8080"
+
+  service-graphite:
+    image: samsaffron/graphite
+    container_name: graphite-server
+    ports:
+     - "7070:80"
+     - "3000:3000"
+     - "2003:2003"
+     - "2004:2004"
+     - "7002:7002"
+     - "8125:8125"
+     - "8126:8126"
+    environment:
+     - SECRET_KEY='random-secret-key'
+    volumes:
+     - /tmp/graphite:/data
