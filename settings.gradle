@@ -1,4 +1,4 @@
-include ':eureka-server'
-include ':turbine-server'
-include ':bydgoszcz-jug'
-include ':torun-jug'
+include ':tools:eureka-server'
+include ':tools:turbine-server'
+include ':microservices:bydgoszcz-jug'
+include ':microservices:torun-jug'
