@@ -1,3 +1,4 @@
 include ':eureka-server'
+include ':turbine-server'
 include ':bydgoszcz-jug'
 include ':torun-jug'

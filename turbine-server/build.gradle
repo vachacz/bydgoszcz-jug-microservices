@@ -15,7 +15,7 @@ apply plugin: 'spring-boot'
 apply from: "../docker.gradle"
 
 jar {
-	baseName = 'eureka-server'
+	baseName = 'turbine-server'
 	version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -27,7 +27,8 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.cloud:spring-cloud-starter-eureka-server')
+	compile('org.springframework.cloud:spring-cloud-starter-turbine')
+	compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

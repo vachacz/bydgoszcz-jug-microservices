@@ -32,3 +32,9 @@ services:
     ports:
      - "5672:5672"
      - "15672:15672"
+
+  service-turbine:
+    image: turbine-server-image
+    container_name: turbine-server
+    ports:
+     - "9090:8080"
