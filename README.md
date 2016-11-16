@@ -30,3 +30,30 @@ In order to see generate some traffic and see that all tools are running properl
 or you can generate some traffic using ab tool as follows:
 
 > ab -c 5 -n 100000 http://localhost:8081/inviteTorunJug
+
+# Links
+
++ Eureka Dashboard
+ + <http://localhost:8761/>
+
++ Zipkin
+ + <http://localhost:9411/>
+
++ RabbitMQ management console
+ + <http://localhost:15672/>
+
++ Hystrix and Turbine dashboards
+ + [Torun-JUG](http://localhost:8082/hystrix/monitor?stream=http%3A%2F%2Fservice-torun-jug%3A8080%2Fhystrix.stream)
+ + [Bydgoszcz-JUG](http://localhost:8081/hystrix/monitor?stream=http%3A%2F%2Fservice-bydgoszcz-jug%3A8080%2Fhystrix.stream)
+ + [Turbine](http://localhost:9090/hystrix/monitor?stream=http%3A%2F%2Fservice-turbine%3A8080%2Fturbine.stream)
+
++ Kibana
+ + <http://localhost:5601/app/kibana#/management/kibana/index/?_g=()>
+
++ Grafana
+ + <http://localhost:3000/>
+
++ Graphite UI
+ + <http://localhost:7070/>
+ 
+ Please note that, when you start the example on Windows, you will need to replace the localhost with IP address of the docker host.
