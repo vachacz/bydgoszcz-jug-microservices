@@ -1,4 +1,4 @@
-This project has been created as a demo project for a talk given on @BydgoszczJUG meetup. It's purpose is to demonstrate very simple microservices implementation with all tools needed to maintain the project in production environment.
+This project has been created as a demo project for a talk given on [@BydgoszczJUG](https://twitter.com/BydgoszczJUG) meetup. It's purpose is to demonstrate very simple microservices implementation with all tools needed to maintain the project in production environment.
 
 Diagram below depitcs implemented use case:<br />
 ![alt tag](https://github.com/vachacz/bydgoszcz-jug-microservices/blob/master/img/flow.png?raw=true)
